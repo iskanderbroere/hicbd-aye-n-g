@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:vue-a11y/recommended"],
+  "plugins": ["vue", "vue-a11y"],
+  "rules": {
+    "no-console": "off",
+    "no-debugger": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": false,
+        "printWidth": 80,
+        "trailingComma": "none"
+      }
+    ]
+  }
+}
+
