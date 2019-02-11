@@ -29,13 +29,13 @@ const createApolloClient = ssr => {
     cache,
     ...(ssr
       ? {
-          // Set this on the server to optimize queries when SSR
-          ssrMode: true
-        }
+        // Set this on the server to optimize queries when SSR
+        ssrMode: true
+      }
       : {
-          // This will temporary disable query force-fetching
-          ssrForceFetchDelay: 100
-        })
+        // This will temporary disable query force-fetching
+        ssrForceFetchDelay: 100
+      })
   })
   return apolloClient
 }
