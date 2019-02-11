@@ -2,7 +2,6 @@ import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 
 export default {
   mode: 'universal',
-
   /*
    ** Headers of the page
    */
@@ -14,36 +13,27 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
-
+  loading: { color: '#FF6200' },
   /*
    ** Global CSS
    */
   css: ['~/assets/main'],
-
   /*
    ** Plugins to load before mounting the App
    */
   plugins: ['~/plugins/vuetify', '~/plugins/icons', '~/plugins/apollo'],
-
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa'
-  ],
+  modules: ['@nuxtjs/pwa'],
   build: {
-    // parallel: true,
-    extractCSS: true,
+    parallel: true,
     transpile: [/^vue-awesome/, /^vuetify/],
     plugins: [new VuetifyLoaderPlugin()],
-    presets({ isServer }) {
+    presets ({ isServer }) {
       const targets = isServer ? { node: '10' } : { ie: '11' }
       return [[require.resolve('@nuxt/babel-preset-app'), { targets }]]
     }
