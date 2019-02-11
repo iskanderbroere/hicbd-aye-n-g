@@ -1,16 +1,37 @@
 <template>
   <v-app>
-    <v-toolbar app class="mx-auto elevation-1" dense>
-      <v-spacer></v-spacer>
-
-      <v-container class="py-0" :class="$style['button-container']">
-        <v-btn to="/" no-prefetch flat
-          ><va-icon class="mr-2" name="flag" /> Home</v-btn
+    <v-toolbar
+      app
+      class="mx-auto elevation-1"
+      dense
+    >
+      <v-spacer />
+      <v-container
+        class="py-0"
+        :class="$style['button-container']"
+      >
+        <v-btn
+          to="/"
+          no-prefetch
+          flat
         >
-        <v-btn to="/about" no-prefetch flat>About</v-btn>
-        <v-btn flat>Link Three</v-btn>
+          <va-icon
+            class="mr-2"
+            name="flag"
+          /> Home
+        </v-btn>
+        <v-btn
+          to="/about"
+          no-prefetch
+          flat
+        >
+          About
+        </v-btn>
+        <v-btn flat>
+          Link Three
+        </v-btn>
       </v-container>
-      <v-spacer></v-spacer>
+      <v-spacer />
     </v-toolbar>
     <v-content>
       <v-container>
@@ -20,10 +41,6 @@
     <v-footer app />
   </v-app>
 </template>
-
-<script>
-export default {}
-</script>
 
 <style module>
 .button-container > a:first-child {

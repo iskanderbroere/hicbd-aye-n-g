@@ -1,5 +1,8 @@
 <template>
-  <v-carousel hide-delimiters :height="295">
+  <v-carousel
+    hide-delimiters
+    :height="295"
+  >
     <v-carousel-item
       v-for="item in carouselItems"
       :key="item.heading"
@@ -20,5 +23,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
