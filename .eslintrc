@@ -5,21 +5,20 @@
     "node": true
   },
   "parserOptions": {
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017,
+    "sourceType": "module"
   },
-  "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:vue-a11y/recommended"],
-  "plugins": ["vue", "vue-a11y"],
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "plugin:promise/recommended",
+    "plugin:vue/recommended",
+    "plugin:vue-a11y/recommended"
+  ],
+  "plugins": ["node", "promise", "vue", "vue-a11y"],
   "rules": {
-    "no-console": "off",
-    "no-debugger": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "semi": false,
-        "printWidth": 80,
-        "trailingComma": "none"
-      }
-    ]
+    "no-console": "warn",
+    "no-debugger": "warn"
   }
 }
-
