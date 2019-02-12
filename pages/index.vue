@@ -16,23 +16,22 @@
           {{ callToAction.description }}
         </span>
         <v-autocomplete
-          v-model="searchTerm"
+          v-model="autocompleteSelection"
+          :search-input.sync="searchTerm"
           solo
-          class="my-2"
+          no-filter
           append-icon
-          hint="Click the icon to edit"
+          class="my-2"
           :items="suggestions"
-          @update:searchInput="updateSuggestions"
         />
-        <button>hi there!</button>
       </v-card-text>
     </v-card>
   </main>
 </template>
 
 <script>
-import LazyHydrate from 'vue-lazy-hydration'
 import INGCarousel from '~/components/INGCarousel'
+import LazyHydrate from 'vue-lazy-hydration'
 import gql from 'graphql-tag'
 
 const homePageQuery = gql`
@@ -54,7 +53,6 @@ const homePageQuery = gql`
 const searchQuery = gql`
   query searchSuggestions {
     searchSuggestions {
-      henk
       name
       type
     }
@@ -79,21 +77,21 @@ export default {
   },
   data: () => ({
     suggestions: [],
+    autocompleteSelection: [],
     searchTerm: ''
   }),
-  methods: {
-    async updateSuggestions (searchTerm) {
+  watch: {
+    async searchTerm (newSearchTerm) {
       try {
         const {
           data: { searchSuggestions }
         } = await this.$apollo.query({
           query: searchQuery,
-          variables: { searchTerm }
+          variables: { newSearchTerm }
         })
-        this.suggestions = [].concat(searchSuggestions)
-        return searchSuggestions
+        this.suggestions = searchSuggestions.map(({ name }) => name)
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     }
   },
