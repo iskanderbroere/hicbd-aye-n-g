@@ -30,7 +30,6 @@ export default {
    */
   modules: ['@nuxtjs/pwa'],
   build: {
-    parallel: true,
     transpile: [/^vue-awesome/, /^vuetify/],
     plugins: [new VuetifyLoaderPlugin()],
     presets ({ isServer }) {
