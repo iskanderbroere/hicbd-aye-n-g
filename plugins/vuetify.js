@@ -5,6 +5,7 @@ import Icon from 'vue-awesome/components/Icon'
 import colors from 'vuetify/es5/util/colors'
 
 const isProd = process.env.NODE_ENV !== 'development'
+
 const themeCache = new LRU({
   max: 10,
   maxAge: 1000 * 60 * 60 // 1 hour

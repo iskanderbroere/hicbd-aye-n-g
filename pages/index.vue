@@ -1,18 +1,31 @@
 <template>
   <main>
-    <h1>{{ heading }}</h1>
-    <lazy-hydrate when-idle>
-      <i-n-g-carousel :carousel-items="brandBars" />
+    <h1 v-if="heading">
+      {{ heading }}
+    </h1>
+    <lazy-hydrate
+      v-if="brandBars && brandBars.length > 0"
+      when-idle
+    >
+      <i-n-g-carousel
+        :carousel-items="brandBars"
+      />
     </lazy-hydrate>
     <v-card
       class="pa-5 orange accent-4 my-4"
       raised
     >
       <v-card-text align-center>
-        <h3 class="display-3 white--text">
+        <h3
+          v-if="callToAction"
+          class="display-3 white--text"
+        >
           {{ callToAction.heading }}
         </h3>
-        <span class="white--text headline">
+        <span
+          v-if="callToAction"
+          class="white--text headline"
+        >
           {{ callToAction.description }}
         </span>
         <v-autocomplete
@@ -76,6 +89,9 @@ export default {
     }
   },
   data: () => ({
+    heading: '',
+    callToAction: null,
+    brandBars: [],
     suggestions: [],
     autocompleteSelection: [],
     searchTerm: ''
