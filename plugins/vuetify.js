@@ -19,7 +19,7 @@ Vue.use(Vuetify, {
     minifyTheme: function (css) {
       return isProd ? css.replace(/[\s|\r\n|\r|\n]/g, '') : css
     },
-    themeCache: isProd ? themeCache : null
+    themeCache
   },
   icons: {
     next: {
