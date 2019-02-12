@@ -10,7 +10,7 @@ Vue.use(VueApollo)
 const createApolloClient = ssr => {
   const httpLink = new HttpLink({
     // You should use an absolute URL here
-    uri: 'http://localhost:4000',
+    uri: process.env.backendUrl,
     fetch
   })
 

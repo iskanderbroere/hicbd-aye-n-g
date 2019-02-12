@@ -45,5 +45,8 @@ export default {
           .filter(f => f.asType === 'script' || 'style')
           .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
     }
+  },
+  env: {
+    backendUrl: process.env.BACKEND_URL || 'http://localhost:4000'
   }
 }
