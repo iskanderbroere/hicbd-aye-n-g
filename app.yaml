@@ -25,4 +25,4 @@ handlers:
 env_variables:
   HOST: '0.0.0.0'
   NODE_ENV: 'production'
-  BACKEND_URL: '/api'
+  BACKEND_URL: 'https://aye-n-g.appspot.com/api'
