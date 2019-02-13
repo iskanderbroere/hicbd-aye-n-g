@@ -7,10 +7,10 @@ import fetch from 'node-fetch'
 
 // Install the vue plugin
 Vue.use(VueApollo)
-const createApolloClient = ssr => {
+const createApolloClient = (ssr, uri) => {
   const httpLink = new HttpLink({
     // You should use an absolute URL here
-    uri: `https://${process.env.GOOGLE_CLOUD_PROJECT}.appspot.com${process.env.BACKEND_URL}`,
+    uri,
     fetch
   })
 
@@ -41,8 +41,9 @@ const createApolloClient = ssr => {
 }
 
 export default ctx => {
-  const { app, beforeNuxtRender } = ctx
-  const apolloClient = createApolloClient(process.server)
+  const { app, app: { $env }, beforeNuxtRender } = ctx
+  const backendUri = `https://${$env.GOOGLE_CLOUD_PROJECT}.appspot.com${$env.BACKEND_URL}`
+  const apolloClient = createApolloClient(process.server, backendUri)
   const apolloProvider = new VueApollo({
     defaultClient: apolloClient
   })
