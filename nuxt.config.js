@@ -50,5 +50,12 @@ export default {
           .filter(f => f.asType === 'script' || 'style')
           .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
     }
+  },
+  vue: {
+    config: {
+      performance: true,
+      devtools: true,
+      silent: false
+    }
   }
 }
