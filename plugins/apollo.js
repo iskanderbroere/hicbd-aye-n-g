@@ -10,7 +10,7 @@ Vue.use(VueApollo)
 const createApolloClient = ssr => {
   const httpLink = new HttpLink({
     // You should use an absolute URL here
-    uri: process.env.backendUrl,
+    uri: `https://${process.env.GOOGLE_CLOUD_PROJECT}.appspot.com${process.env.BACKEND_URL}`,
     fetch
   })
 

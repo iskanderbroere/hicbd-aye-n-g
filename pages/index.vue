@@ -77,17 +77,6 @@ export default {
     LazyHydrate,
     INGCarousel
   },
-  apollo: {
-    homePage: {
-      query: homePageQuery,
-      manual: true,
-      result ({ data: { brandBars, heading, callToAction } }) {
-        this.brandBars = brandBars
-        this.heading = heading
-        this.callToAction = callToAction
-      }
-    }
-  },
   data: () => ({
     heading: '',
     callToAction: null,
@@ -108,6 +97,21 @@ export default {
         this.suggestions = searchSuggestions.map(({ name }) => name)
       } catch (error) {
         console.error(error)
+      }
+    }
+  },
+  mounted () {
+    console.log(process.env.GOOGLE_CLOUD_PROJECT)
+    console.log(process.env.BACKEND_URL)
+  },
+  apollo: {
+    homePage: {
+      query: homePageQuery,
+      manual: true,
+      result ({ data: { brandBars, heading, callToAction } }) {
+        this.brandBars = brandBars
+        this.heading = heading
+        this.callToAction = callToAction
       }
     }
   },

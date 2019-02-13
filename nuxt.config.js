@@ -28,7 +28,12 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa'],
+  modules: [
+    '@nuxtjs/pwa',
+    ['nuxt-env', {
+      keys: ['BACKEND_URL', 'GOOGLE_CLOUD_PROJECT']
+    }]
+  ],
   build: {
     transpile: [/^vue-awesome/, /^vuetify/],
     plugins: [new VuetifyLoaderPlugin()],
@@ -45,8 +50,5 @@ export default {
           .filter(f => f.asType === 'script' || 'style')
           .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
     }
-  },
-  env: {
-    backendUrl: process.env.BACKEND_URL || 'http://localhost:4000'
   }
 }
