@@ -9,10 +9,12 @@ basic_scaling:
 
 handlers:
   - url: /_nuxt
+    expiration: '365d'
     static_dir: .nuxt/dist/client
     secure: always
 
   - url: /(.*\.(gif|png|jpg|ico|txt))$
+    expiration: '365d'
     static_files: static/\1
     upload: static/.*\.(gif|png|jpg|ico|txt)$
     secure: always
