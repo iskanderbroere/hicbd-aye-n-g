@@ -94,6 +94,7 @@ export default {
           query: searchQuery,
           variables: { newSearchTerm }
         })
+        console.log(searchSuggestions)
         this.suggestions = searchSuggestions.map(({ name }) => name)
       } catch (error) {
         console.error(error)
