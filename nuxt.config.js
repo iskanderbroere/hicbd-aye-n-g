@@ -35,6 +35,7 @@ export default {
     }]
   ],
   build: {
+    parallel: true,
     transpile: [/^vue-awesome/, /^vuetify/],
     plugins: [new VuetifyLoaderPlugin()],
     presets ({ isServer }) {
