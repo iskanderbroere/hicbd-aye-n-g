@@ -11,7 +11,7 @@ const createApolloClient = ssr => {
   const httpLink = new HttpLink({
     // You should use an absolute URL here
     // uri: process.env.backendUrl,
-    uri: 'https://aye-n-g.appspot.com/api',
+    uri: process.env.backendUrl,
     fetch
   })
 
