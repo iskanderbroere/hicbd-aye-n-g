@@ -100,10 +100,6 @@ export default {
       }
     }
   },
-  mounted () {
-    console.log(process.env.GOOGLE_CLOUD_PROJECT)
-    console.log(process.env.BACKEND_URL)
-  },
   apollo: {
     homePage: {
       query: homePageQuery,
