@@ -31,6 +31,7 @@
         <v-autocomplete
           v-model="autocompleteSelection"
           :search-input.sync="searchTerm"
+          label="Type om te zoeken..."
           solo
           no-filter
           append-icon
@@ -64,8 +65,8 @@ const homePageQuery = gql`
   }
 `
 const searchQuery = gql`
-  query searchSuggestions {
-    searchSuggestions {
+  query searchSuggestions($searchTerm: String) {
+    searchSuggestions(searchTerm: $searchTerm) {
       name
       type
     }
@@ -92,7 +93,7 @@ export default {
           data: { searchSuggestions }
         } = await this.$apollo.query({
           query: searchQuery,
-          variables: { newSearchTerm }
+          variables: { searchTerm: newSearchTerm }
         })
         console.log(searchSuggestions)
         this.suggestions = searchSuggestions.map(({ name }) => name)
