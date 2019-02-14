@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.6",
-    "apollo-cache-inmemory": "^1.4.2",
-    "apollo-client": "^2.4.12",
+    "apollo-cache-inmemory": "^1.4.3",
+    "apollo-client": "^2.4.13",
     "apollo-link-http": "^1.5.11",
     "cross-env": "^5.2.0",
     "graphql": "^14.1.1",
