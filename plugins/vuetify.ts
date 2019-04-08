@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 import LRU from 'lru-cache'
-import Icon from 'vue-awesome/components/Icon'
+import Icon from 'vue-awesome/components/Icon.vue'
 import colors from 'vuetify/es5/util/colors'
 
 const isProd = process.env.NODE_ENV !== 'development'
@@ -17,7 +17,7 @@ Vue.use(Vuetify, {
     secondary: colors.grey.darken4
   },
   options: {
-    minifyTheme: function (css) {
+    minifyTheme: function(css) {
       return isProd ? css.replace(/[\s|\r\n|\r|\n]/g, '') : css
     },
     themeCache

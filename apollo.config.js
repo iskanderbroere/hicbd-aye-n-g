@@ -2,9 +2,9 @@ module.exports = {
   client: {
     service: {
       name: 'nestjs',
-      url: 'http://localhost:4000/graphql'
+      url: 'http://localhost:4000/api/graphql'
     },
-    includes: ['./**/*.vue', './**/*.js'],
+    includes: ['./graphql/**/*.ts'],
     excludes: ['**/node_modules/**/*', '**/.nuxt/**/*']
   }
 }

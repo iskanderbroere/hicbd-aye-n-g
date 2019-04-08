@@ -1,6 +1,7 @@
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
+import NuxtConfiguration from '@nuxt/config-edge'
 
-export default {
+const config: NuxtConfiguration = {
   mode: 'universal',
   /*
    ** Headers of the page
@@ -32,24 +33,27 @@ export default {
     '@nuxtjs/pwa',
     ['nuxt-env', {
       keys: ['BACKEND_URL', 'GOOGLE_CLOUD_PROJECT']
-    }]
+    }],
+    'nuxt-purgecss'
   ],
   build: {
     parallel: true,
     transpile: [/^vue-awesome/, /^vuetify/],
     plugins: [new VuetifyLoaderPlugin()],
-    presets ({ isServer }) {
-      const targets = isServer ? { node: '10' } : { ie: '11' }
-      return [[require.resolve('@nuxt/babel-preset-app'), { targets }]]
+    babel: {
+      presets ({ isServer }: { isServer: boolean }) {
+        const targets = isServer ? { node: '10' } : { ie: '11' }
+        return [[require.resolve('@nuxt/babel-preset-app-edge'), { targets }]]
+      }
     }
   },
   render: {
     http2: {
       push: true,
-      pushAssets: (req, res, publicPath, preloadFiles) =>
+      pushAssets: (_: unknown, __: unknown, publicPath: string, preloadFiles: File[]) =>
         preloadFiles
-          .filter(f => f.asType === 'script' || 'style')
-          .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
+          .filter((f: File) => f.asType === 'script' || 'style')
+          .map((f: File) => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
     }
   },
   vue: {
@@ -60,3 +64,8 @@ export default {
     }
   }
 }
+interface File {
+  asType: string
+  file: string
+}
+export default config

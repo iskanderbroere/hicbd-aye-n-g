@@ -35,7 +35,11 @@
               <span
                 v-if="callToAction"
                 class="white--text headline"
-              >{{ callToAction.description }}</span>
+              >
+                {{
+                  callToAction.description
+                }}
+              </span>
               <v-autocomplete
                 v-model="autocompleteSelection"
                 :search-input.sync="searchTerm"
@@ -68,77 +72,38 @@
   </main>
 </template>
 
-<script>
-import INGCarousel from '~/components/INGCarousel'
+<script lang="ts">
+import { Component, Watch, Vue } from 'vue-property-decorator'
+import INGCarousel from '~/components/INGCarousel.vue'
 import LazyHydrate from 'vue-lazy-hydration'
-import gql from 'graphql-tag'
+import homePageQuery from "~/graphql/queries/homePage";
+import searchQuery from "~/graphql/queries/search";
 
-const homePageQuery = gql`
-  query homePage {
-    brandBars {
-      heading
-      image {
-        altText
-        url
-      }
-    }
-    heading
-    callToAction {
-      heading
-      description
-    }
-  }
-`
-const searchQuery = gql`
-  query searchSuggestions($searchTerm: String) {
-    searchSuggestions(searchTerm: $searchTerm) {
-      name
-      type
-    }
-  }
-`
-
-export default {
+@Component({
   components: {
     LazyHydrate,
     INGCarousel
-  },
-  data: () => ({
-    heading: '',
-    callToAction: null,
-    brandBars: [],
-    suggestions: [],
-    autocompleteSelection: [],
-    searchTerm: ''
-  }),
-  watch: {
-    async searchTerm (newSearchTerm) {
-      try {
-        const {
-          data: { searchSuggestions }
-        } = await this.$apollo.query({
-          query: searchQuery,
-          variables: { searchTerm: newSearchTerm }
-        })
-        console.log(searchSuggestions)
-        this.suggestions = searchSuggestions.map(({ name }) => name)
-      } catch (error) {
-        console.error(error)
-      }
-    }
   },
   apollo: {
     homePage: {
       query: homePageQuery,
       manual: true,
-      result ({ data: { brandBars, heading, callToAction } }) {
+      result({ data: { brandBars, heading, callToAction } }) {
         this.brandBars = brandBars
         this.heading = heading
         this.callToAction = callToAction
       }
     }
-  },
-  head () {
+  }
+})
+export default class Home extends Vue {
+  heading = ''
+  callToAction = null
+  brandBars = []
+  suggestions = []
+  autocompleteSelection = []
+  searchTerm = ''
+  head() {
     return {
       title: this.heading,
       meta: [
@@ -150,5 +115,16 @@ export default {
       ]
     }
   }
+  @Watch('searchTerm')
+  async search(newSearchTerm: string) {
+    const {
+        data: { searchSuggestions }
+      } = await this.$apollo.query({
+        query: searchQuery,
+        variables: { searchTerm: newSearchTerm }
+      })
+      this.suggestions = searchSuggestions.map(({ name }) => name)
+  }
 }
+
 </script>
