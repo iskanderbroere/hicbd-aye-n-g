@@ -33,8 +33,7 @@ const config: NuxtConfiguration = {
     '@nuxtjs/pwa',
     ['nuxt-env', {
       keys: ['BACKEND_URL', 'GOOGLE_CLOUD_PROJECT']
-    }],
-    'nuxt-purgecss'
+    }]
   ],
   build: {
     parallel: true,

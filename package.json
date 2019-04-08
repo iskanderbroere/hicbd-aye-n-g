@@ -50,7 +50,6 @@
     "eslint-plugin-vue": "^5.1.0",
     "eslint-plugin-vue-a11y": "^0.0.28",
     "now": "^15.0.3",
-    "nuxt-purgecss": "^0.2.1",
     "prettier": "1.16.4",
     "ts-node": "^8.0.3"
   }
