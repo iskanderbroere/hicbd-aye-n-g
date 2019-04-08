@@ -36,11 +36,19 @@ const config: NuxtConfiguration = {
     }]
   ],
   build: {
+    filenames: {
+      app: () => '[name].js',
+      chunk: () => '[name].js',
+      css: () => '[name].css',
+      img: () => '[path][name].[ext]',
+      font: () => '[path][name].[ext]',
+      video: () => '[path][name].[ext]'
+    },
     parallel: true,
     transpile: [/^vue-awesome/, /^vuetify/],
     plugins: [new VuetifyLoaderPlugin()],
     babel: {
-      presets ({ isServer }: { isServer: boolean }) {
+      presets({ isServer }: { isServer: boolean }) {
         const targets = isServer ? { node: '10' } : { ie: '11' }
         return [[require.resolve('@nuxt/babel-preset-app'), { targets }]]
       }
