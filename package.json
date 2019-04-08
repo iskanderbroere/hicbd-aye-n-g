@@ -28,6 +28,7 @@
     "nuxt-env": "^0.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "ts-node": "^8.0.3",
     "vue-apollo": "^3.0.0-beta.28",
     "vue-awesome": "^3.3.1",
     "vue-lazy-hydration": "^1.0.0-beta.6",
@@ -50,7 +51,6 @@
     "eslint-plugin-vue": "^5.1.0",
     "eslint-plugin-vue-a11y": "^0.0.28",
     "now": "^15.0.3",
-    "prettier": "1.16.4",
-    "ts-node": "^8.0.3"
+    "prettier": "1.16.4"
   }
 }
