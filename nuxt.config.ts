@@ -1,5 +1,5 @@
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
-import NuxtConfiguration from '@nuxt/config-edge'
+import NuxtConfiguration from '@nuxt/config'
 
 const config: NuxtConfiguration = {
   mode: 'universal',
@@ -42,7 +42,7 @@ const config: NuxtConfiguration = {
     babel: {
       presets ({ isServer }: { isServer: boolean }) {
         const targets = isServer ? { node: '10' } : { ie: '11' }
-        return [[require.resolve('@nuxt/babel-preset-app-edge'), { targets }]]
+        return [[require.resolve('@nuxt/babel-preset-app'), { targets }]]
       }
     }
   },

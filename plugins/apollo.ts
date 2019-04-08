@@ -44,11 +44,11 @@ const createApolloClient = (ssr: boolean, uri: string): ApolloClient<NormalizedC
 export default ctx => {
   const { app, app: { $env }, beforeNuxtRender } = ctx
   const backendUri = process.env.NODE_ENV === 'production' ? `https://${$env.GOOGLE_CLOUD_PROJECT}.appspot.com${$env.BACKEND_URL}` : 'http://localhost:4000/api/graphql'
-  const apolloClient = createApolloClient(process.server, backendUri)
+  const apolloClient = createApolloClient(process['server'], backendUri)
   const apolloProvider = new VueApollo({
     defaultClient: apolloClient
   })
-  if (process.server) {
+  if (process['server']) {
     beforeNuxtRender(async ({ nuxtState }) => {
       const { getStates } = await import('vue-apollo/ssr')
       nuxtState.apollo = getStates(apolloProvider)
