@@ -17,6 +17,7 @@ Vue.use(Vuetify, {
     secondary: colors.grey.darken4
   },
   options: {
+    customProperties: true,
     minifyTheme: function(css) {
       return isProd ? css.replace(/[\s|\r\n|\r|\n]/g, '') : css
     },

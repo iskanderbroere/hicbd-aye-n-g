@@ -58,14 +58,7 @@
           :key="`4${i}`"
           xs4
         >
-          <v-card
-            dark
-            color="primary"
-          >
-            <v-card-text class="px-0">
-              4
-            </v-card-text>
-          </v-card>
+          <Card :title="i" />
         </v-flex>
       </v-layout>
     </v-container>
@@ -74,7 +67,6 @@
 
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator'
-import INGCarousel from '~/components/INGCarousel.vue'
 import LazyHydrate from 'vue-lazy-hydration'
 import homePageQuery from "~/graphql/queries/homePage";
 import searchQuery from "~/graphql/queries/search";
@@ -82,7 +74,8 @@ import searchQuery from "~/graphql/queries/search";
 @Component({
   components: {
     LazyHydrate,
-    INGCarousel
+    Card: () => import('~/components/Card.vue'),
+    INGCarousel: () => import(/* webpackChunkName: "carousel" */ '~/components/INGCarousel.vue')
   },
   apollo: {
     homePage: {

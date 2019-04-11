@@ -33,7 +33,7 @@
     "vue-awesome": "^3.3.1",
     "vue-lazy-hydration": "^1.0.0-beta.6",
     "vue-property-decorator": "^8.0.0",
-    "vuetify": "^1.5.9",
+    "vuetify": "^1.5.11",
     "vuetify-loader": "^1.2.1"
   },
   "devDependencies": {

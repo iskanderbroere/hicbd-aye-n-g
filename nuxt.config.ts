@@ -38,7 +38,7 @@ const config: NuxtConfiguration = {
   build: {
     filenames: {
       // readable filenames
-      app: () => '[name].js',
+      app: () => '[name]-[chunk].js',
       chunk: () => '[name].js',
       css: () => '[name].css',
       img: () => '[path][name].[ext]',
