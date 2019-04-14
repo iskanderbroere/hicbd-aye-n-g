@@ -13,12 +13,10 @@
           {{ heading }}
         </v-flex>
         <v-flex xs12>
-          <lazy-hydrate
+          <i-n-g-carousel
             v-if="brandBars && brandBars.length > 0"
-            when-idle
-          >
-            <i-n-g-carousel :carousel-items="brandBars" />
-          </lazy-hydrate>
+            :carousel-items="brandBars"
+          />
         </v-flex>
         <v-flex xs12>
           <v-card
@@ -54,10 +52,14 @@
           </v-card>
         </v-flex>
         <v-flex
-          v-for="i in 3"
+          v-for="i in 60"
           :key="`4${i}`"
           xs4
         >
+          <v-img
+            lazy-src="https://via.placeholder.com/15"
+            :src="`https://picsum.photos/200/300/?random?hank${i}`"
+          />
           <Card :title="i" />
         </v-flex>
       </v-layout>

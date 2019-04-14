@@ -18,7 +18,7 @@ Vue.use(Vuetify, {
   },
   options: {
     customProperties: true,
-    minifyTheme: function(css) {
+    minifyTheme: function(css): string {
       return isProd ? css.replace(/[\s|\r\n|\r|\n]/g, '') : css
     },
     themeCache

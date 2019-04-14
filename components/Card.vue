@@ -3,7 +3,7 @@
     <h1 :class="$style.header">
       {{ title }}
     </h1>
-    <v-img ></v-img>
+    <v-img />
   </article>
 </template>
 
@@ -11,7 +11,7 @@
 export default {
   props: {
     title: {
-      type: String,
+      type: [String, Number],
         required: true
     }
   }

@@ -25,7 +25,7 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/vuetify', '~/plugins/icons', '~/plugins/apollo'],
+  plugins: ['~/plugins/vuetify', '~/plugins/awesome-icons', '~/plugins/apollo'],
   /*
    ** Nuxt.js modules
    */
@@ -36,20 +36,26 @@ const config: NuxtConfiguration = {
     }]
   ],
   build: {
-    filenames: {
-      // readable filenames
-      app: () => '[name]-[chunk].js',
-      chunk: () => '[name].js',
-      css: () => '[name].css',
-      img: () => '[path][name].[ext]',
-      font: () => '[path][name].[ext]',
-      video: () => '[path][name].[ext]'
+    extend(config, { isClient, isDev }): void {
+      // Extend only webpack config for client-bundle
+      if (isClient && isDev) {
+        config.devtool = '#source-map'
+      }
     },
+    // filenames: {
+    //   // readable filenames
+    //   app: (): string => '[name]-[chunk].js',
+    //   chunk: (): string => '[name].js',
+    //   css: (): string => '[name].css',
+    //   img: (): string => '[path][name].[ext]',
+    //   font: (): string => '[path][name].[ext]',
+    //   video: (): string => '[path][name].[ext]'
+    // },
     parallel: true,
     transpile: [/^vue-awesome/, /^vuetify/],
     plugins: [new VuetifyLoaderPlugin()],
     babel: {
-      presets({ isServer }: { isServer: boolean }) {
+      presets({ isServer }: { isServer: boolean }): any {
         const targets = isServer ? { node: '10' } : { ie: '11' }
         return [[require.resolve('@nuxt/babel-preset-app'), { targets }]]
       }
@@ -58,10 +64,10 @@ const config: NuxtConfiguration = {
   render: {
     http2: {
       push: true,
-      pushAssets: (_: unknown, __: unknown, publicPath: string, preloadFiles: File[]) =>
+      pushAssets: (_: unknown, __: unknown, publicPath: string, preloadFiles: File[]): string[] =>
         preloadFiles
-          .filter((f: File) => f.asType === 'script' || 'style')
-          .map((f: File) => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
+          .filter((f: File): boolean => f.asType === ('script' || 'style'))
+          .map((f: File): string => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
     }
   },
   vue: {
