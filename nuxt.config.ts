@@ -43,13 +43,13 @@ const config: NuxtConfiguration = {
       }
     },
     filenames: {
-    //   // readable filenames
-    //   app: (): string => '[name]-[chunk].js',
-      chunk: (): string => '[name]--[chunkhash].js',
-    //   css: (): string => '[name].css',
-    //   img: (): string => '[path][name].[ext]',
-    //   font: (): string => '[path][name].[ext]',
-    //   video: (): string => '[path][name].[ext]'
+      //   // readable filenames
+      //   app: (): string => '[name]-[chunk].js',
+      chunk: ({ isDev }): string => isDev ? '[name].js' : '[name]--[chunkhash].js',
+      //   css: (): string => '[name].css',
+      //   img: (): string => '[path][name].[ext]',
+      //   font: (): string => '[path][name].[ext]',
+      //   video: (): string => '[path][name].[ext]'
     },
     parallel: true,
     transpile: [/^vue-awesome/, /^vuetify/],

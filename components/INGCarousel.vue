@@ -22,24 +22,32 @@
       :class="$style['glide__arrows']"
       data-glide-el="controls"
     >
-      <va-icon
-        name="chevron-left"
-        data-glide-dir="<"
+      <v-btn
+        flat
+        icon
+        absolute
+        aria-label="Previous"
+        color="white"
         :class="[$style['glide__arrow'], $style['glide__arrow--left']]"
-      />
-      <!-- <button
+        data-glide-dir="<"
       >
-        prev
-      </button> -->
-      <va-icon
-        name="chevron-right"
-        data-glide-dir=">"
+        <va-icon
+          name="chevron-left"
+        />
+      </v-btn>
+      <v-btn
+        flat
+        icon
+        absolute
+        aria-label="Next"
+        color="white"
         :class="[$style['glide__arrow'], $style['glide__arrow--right']]"
-      />
-      <!-- <button
+        data-glide-dir=">"
       >
-        next
-      </button> -->
+        <va-icon
+          name="chevron-right"
+        />
+      </v-btn>
     </div>
   </div>
 </template>
