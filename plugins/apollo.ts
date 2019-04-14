@@ -50,7 +50,7 @@ export default ctx => {
   })
   if (process['server']) {
     beforeNuxtRender(async ({ nuxtState }) => {
-      const { getStates } = await import('vue-apollo/ssr')
+      const { getStates } = await import(/* webpackChunkName: "VueApolloSsr" */ 'vue-apollo/ssr')
       nuxtState.apollo = getStates(apolloProvider)
     })
   }

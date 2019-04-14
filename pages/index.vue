@@ -76,8 +76,8 @@ import searchQuery from "~/graphql/queries/search";
 @Component({
   components: {
     LazyHydrate,
-    Card: () => import('~/components/Card.vue'),
-    INGCarousel: () => import(/* webpackChunkName: "carousel" */ '~/components/INGCarousel.vue')
+    Card: () => import(/* webpackChunkName: "Card" */ '~/components/Card.vue'),
+    INGCarousel: () => import(/* webpackChunkName: "Carousel" */ '~/components/INGCarousel.vue')
   },
   apollo: {
     homePage: {

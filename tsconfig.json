@@ -21,7 +21,7 @@
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": true,
+    "removeComments": false,
     "types": [
       "@types/node",
       "@nuxt/vue-app-edge",
