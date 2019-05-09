@@ -1,12 +1,17 @@
-<template functional>
-  <img
-    loading="lazy"
-    :data-src="props.src"
-    data-optimumx="auto"
-    data-sizes="auto"
-    :class="$style.card_media"
-    class="lazyload"
-  >
+<template>
+  <picture>
+    <source :data-src="require(`@/assets/unsamples/${src}.jpg?webp`)" type="image/webp">
+    <source :data-src="require(`@/assets/unsamples/${src}.jpg`)" type="image/jpeg">
+    <img
+      :alt="alt"
+      loading="lazy"
+      :data-src="require(`@/assets/unsamples/${src}.jpg`)"
+      data-optimumx="auto"
+      data-sizes="auto"
+      :class="$style.card_media"
+      class="lazyload"
+    >
+  </picture>
 </template>
 
 <script>
