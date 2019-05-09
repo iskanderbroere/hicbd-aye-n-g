@@ -38,7 +38,8 @@ const config: NuxtConfiguration = {
     '@nuxtjs/pwa',
     ['nuxt-env', {
       keys: ['BACKEND_URL', 'GOOGLE_CLOUD_PROJECT']
-    }]
+    }],
+    '@bazzite/nuxt-optimized-images'
   ],
   build: {
     extend(config, { isClient, isDev }): void {

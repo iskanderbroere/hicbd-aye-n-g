@@ -31,7 +31,7 @@
         <v-flex v-for="i in 30" :key="`4${i}`" xs12 md4>
           <Card>
             <CardMedia
-              :src="require(`@/assets/unsamples/${i}.jpg`)"
+              :src="require(`@/assets/unsamples/${i}.jpg?webp?lqip`)"
               :alt="i"
             />
             <CardHeader>
