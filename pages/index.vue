@@ -23,6 +23,7 @@
                 no-filter
                 append-icon
                 class="my-2"
+                type="search"
                 :items="suggestions"
               />
             </v-card-text>
