@@ -25,7 +25,12 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/vuetify', '~/plugins/awesome-icons', '~/plugins/apollo'],
+  plugins: [
+    '~/plugins/vuetify',
+    '~/plugins/awesome-icons',
+    '~/plugins/apollo',
+    '~/plugins/lazysizes.client'
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -38,6 +43,19 @@ const config: NuxtConfiguration = {
   build: {
     extend(config, { isClient, isDev }): void {
       // Extend only webpack config for client-bundle
+      config.module!.rules.push({
+        test: /\.svelte$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'svelte-loader',
+          options: {
+            emitCss: true,
+            hotReload: false,
+            generate: isClient ? 'dom' : 'ssr',
+            hydratable: !isClient
+          }
+        }
+      })
       if (isClient && isDev) {
         config.devtool = '#source-map'
       }
