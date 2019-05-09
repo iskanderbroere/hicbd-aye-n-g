@@ -1,26 +1,16 @@
-<template>
-  <article>
-    <h1 :class="$style.header">
-      {{ title }}
-    </h1>
-    <v-img />
+<template functional>
+  <article :class="[$style.card, $style.card_shadow_a]">
+    <slot/>
   </article>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: [String, Number],
-        required: true
-    }
-  }
-}
-</script>
-
 <style module>
-.header {
-    font-size: 22px;
-    color: grey;
+.card {
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+.card_shadow_a {
+  box-shadow: 0 3px 0 0 rgba(0,0,0,.15);
+  border: 1px solid #EBEBEB;
 }
 </style>

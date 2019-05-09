@@ -11,7 +11,6 @@
           :class="$style['glide__slide']"
         >
           <v-img
-            lazy-src="https://via.placeholder.com/15"
             :src="'https://www.ing.nl' + item.image.url"
             :alt="item.image.altText"
           />
