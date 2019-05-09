@@ -54,8 +54,8 @@ import searchQuery from '~/graphql/queries/search'
   components: {
     LazyHydrate,
     Card: () => import(/* webpackChunkName: "Card" */ '~/components/Card.vue'),
-    CardHeader: () => import(/* webpackChunkName: "Card" */ '~/components/CardHeader.vue'),
-    CardMedia: () => import(/* webpackChunkName: "Card" */ '~/components/CardMedia.vue'),
+    CardHeader: () => import(/* webpackChunkName: "CardHeader" */ '~/components/CardHeader.vue'),
+    CardMedia: () => import(/* webpackChunkName: "CardMedia" */ '~/components/CardMedia.vue'),
     LazyImage: () => import(/* webpackChunkName: "LazyImage" */ '~/components/LazyImage.vue'),
     INGCarousel: () =>
       import(/* webpackChunkName: "Carousel" */ '~/components/INGCarousel.vue')
